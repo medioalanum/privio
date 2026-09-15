@@ -262,9 +262,13 @@
             const futureLabel = button.dataset.deleteFutureLabel;
             const singleConfirm = button.dataset.deleteSingleConfirm;
             const futureConfirm = button.dataset.deleteFutureConfirm;
+            // The modal itself is the confirmation. Do not add hx-confirm here:
+            // it would open a second native browser dialog after the user has
+            // already selected the requested deletion scope.
+            const afterDelete = 'if(event.detail.successful) closeModal()';
             const options = future
-                ? `<button type="button" class="secondary outline" hx-delete="${single}" hx-target="#dashboard-content" hx-swap="innerHTML" hx-confirm="${singleConfirm}" hx-on::after-request="if(event.detail.successful) closeModal()">${singleLabel}</button><button type="button" class="outline action-delete" hx-delete="${future}" hx-target="#dashboard-content" hx-swap="innerHTML" hx-confirm="${futureConfirm}" hx-on::after-request="if(event.detail.successful) closeModal()">${futureLabel}</button>`
-                : `<button type="button" class="outline action-delete" hx-delete="${single}" hx-target="#dashboard-content" hx-swap="innerHTML" hx-confirm="${singleConfirm}" hx-on::after-request="if(event.detail.successful) closeModal()">${singleLabel}</button>`;
+                ? `<button type="button" class="secondary outline" hx-delete="${single}" hx-target="#dashboard-content" hx-swap="innerHTML" hx-on::after-request="${afterDelete}">${singleLabel}</button><button type="button" class="outline action-delete" hx-delete="${future}" hx-target="#dashboard-content" hx-swap="innerHTML" hx-on::after-request="${afterDelete}">${futureLabel}</button>`
+                : `<button type="button" class="outline action-delete" hx-delete="${single}" hx-target="#dashboard-content" hx-swap="innerHTML" hx-on::after-request="${afterDelete}">${singleLabel}</button>`;
             document.getElementById('modal-container').innerHTML = `<div class="modal-backdrop" onclick="if(event.target === this) closeModal()"><article class="modal-content"><header style="display:flex;justify-content:space-between;align-items:center"><h4 style="margin-bottom:0">${button.dataset.deleteTitle || 'Excluir'}</h4><button type="button" aria-label="Close" class="contrast outline" onclick="closeModal()" style="border:none;font-size:1.5rem;line-height:1;padding:0">&times;</button></header><p>${future ? futureConfirm : singleConfirm}</p><div style="display:flex;gap:.75rem;flex-wrap:wrap">${options}<button type="button" class="secondary" onclick="closeModal()">Cancelar</button></div></article></div>`;
             htmx.process(document.getElementById('modal-container'));
             const first = document.querySelector('#modal-container .modal-content button');
