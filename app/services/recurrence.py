@@ -36,16 +36,23 @@ def _adjustment_for(
         ),
         None,
     )
-    if single is not None:
-        return single
     future = [
         adjustment
         for adjustment in item.adjustments
         if adjustment.scope == "future" and adjustment.effective_date <= occurrence_date
     ]
     if not future:
-        return None
-    return max(future, key=lambda adjustment: adjustment.effective_date)
+        return single
+    latest_future = max(future, key=lambda adjustment: adjustment.effective_date)
+    # A series deletion for this exact occurrence must not be masked by an
+    # older single-occurrence exception left by a previous action.
+    if (
+        single is not None
+        and latest_future.effective_date == occurrence_date
+        and latest_future.is_deleted
+    ):
+        return latest_future
+    return latest_future if single is None else single
 
 
 def _apply_adjustment(

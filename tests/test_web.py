@@ -418,6 +418,17 @@ def test_recurring_occurrence_edit_scopes_and_single_delete(
     }
     assert "2026-11-15" not in dates
 
+    same_date_series_delete = client.delete(
+        f"/ui/commitments/{commitment_id}/occurrences/2026-10-15?scope=future"
+    )
+    assert same_date_series_delete.status_code == 200
+    after_series_delete = client.get("/upcoming?from_date=2026-09-01&days=100").json()
+    assert not any(
+        item["description"] == "School Pedro"
+        and item["occurrence_date"] >= "2026-10-15"
+        for item in after_series_delete
+    )
+
     base = client.get(f"/commitments/{commitment_id}").json()
     assert base["amount"] == "400.00"
 
