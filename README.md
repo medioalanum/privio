@@ -134,8 +134,8 @@ Requirements: Python 3.12, [uv](https://docs.astral.sh/uv/), and a PostgreSQL da
 dedicated to development.
 
 ```bash
-git clone https://github.com/medioalanum/privio_v1.git
-cd privio_v1
+git clone https://github.com/medioalanum/privio.git
+cd privio
 cp .env.example .env
 uv sync --frozen --all-groups
 ```
