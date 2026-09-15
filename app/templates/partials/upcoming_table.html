@@ -94,26 +94,18 @@
                                         </button>
                                         <button
                                             class="outline action-delete"
-                                            hx-delete="/ui/commitments/{{ item.original_commitment_id }}/occurrences/{{ item.occurrence_date.isoformat() }}?lang={{ lang }}&month={{ selected_month_key }}"
-                                            hx-target="#dashboard-content"
-                                            hx-swap="innerHTML"
-                                            aria-label="{{ t('btn_delete_occurrence') }}"
-                                            title="{{ t('btn_delete_occurrence') }}"
-                                            hx-confirm="{{ t('confirm_delete_occurrence') }}">
-                                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" stroke-width="2.2" stroke-linecap="round"/></svg>
+                                            type="button"
+                                            data-delete-single="/ui/commitments/{{ item.original_commitment_id }}/occurrences/{{ item.occurrence_date.isoformat() }}?lang={{ lang }}&month={{ selected_month_key }}"
+                                            data-delete-future="{{ '/ui/commitments/' ~ item.original_commitment_id ~ '/occurrences/' ~ item.occurrence_date.isoformat() ~ '?lang=' ~ lang ~ '&month=' ~ selected_month_key ~ '&scope=future' if item.recurrence.value != 'none' else '' }}"
+                                            data-delete-single-label="{{ t('btn_delete_occurrence') }}"
+                                            data-delete-future-label="{{ t('btn_delete_future') }}"
+                                            data-delete-single-confirm="{{ t('confirm_delete_occurrence') }}"
+                                            data-delete-future-confirm="{{ t('confirm_delete_future') }}"
+                                            aria-label="{{ t('btn_delete') }}"
+                                            title="{{ t('btn_delete') }}"
+                                            onclick="openDeleteModal(this)">
+                                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 7h14M9 7V4h6v3m-8 0 1 13h8l1-13m-6 4v6m4-6v6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                                         </button>
-                                        {% if item.recurrence.value != 'none' %}
-                                            <button
-                                                class="outline action-delete"
-                                                hx-delete="/ui/commitments/{{ item.original_commitment_id }}/occurrences/{{ item.occurrence_date.isoformat() }}?lang={{ lang }}&month={{ selected_month_key }}&scope=future"
-                                                hx-target="#dashboard-content"
-                                                hx-swap="innerHTML"
-                                                aria-label="{{ t('btn_delete_future') }}"
-                                                title="{{ t('btn_delete_future') }}"
-                                                hx-confirm="{{ t('confirm_delete_future') }}">
-                                                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 7h10m-6-3h6v3m3 3v10H8V10m7 3 4-4-4-4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                                            </button>
-                                        {% endif %}
                                     </div></details></div>
                                 </td>
                             {% endif %}

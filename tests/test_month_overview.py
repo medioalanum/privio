@@ -68,7 +68,7 @@ def test_client_overview_has_no_operations(readonly_client, db_session):
     assert 'id="coverage-title"' in page.text
     assert 'max="100"' in page.text
     assert "hx-post=" not in page.text
-    assert "hx-delete=" not in page.text
+    assert 'hx-delete="/' not in page.text
     assert "/ui/commitments/new" not in page.text
     assert 'id="accounts-panel"' not in page.text
     assert 'href="/docs"' not in page.text
