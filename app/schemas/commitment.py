@@ -78,6 +78,7 @@ class CommitmentOccurrenceResponse(BaseModel):
     amount: Decimal
     is_estimate: bool
     original_due_date: date
+    source_occurrence_date: date
     occurrence_date: date
     days_until: int
     recurrence: RecurrenceEnum

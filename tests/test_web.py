@@ -357,6 +357,10 @@ def test_recurring_occurrence_edit_scopes_and_single_delete(
     assert "440.00" in single.text
     assert "24/08/2026" in single.text
     assert 'aria-label="🗑️"' in single.text
+    assert (
+        f'data-delete-single="/ui/commitments/{commitment_id}/occurrences/2026-08-15?'
+        in single.text
+    )
     assert 'data-delete-single-label="Excluir somente esta ocorrência"' in single.text
     assert 'data-delete-future-label="Excluir este e os próximos vencimentos"' in single.text
     assert 'M6 6l12 12' not in single.text

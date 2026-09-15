@@ -95,8 +95,8 @@
                                         <button
                                             class="outline action-delete"
                                             type="button"
-                                            data-delete-single="/ui/commitments/{{ item.original_commitment_id }}/occurrences/{{ item.occurrence_date.isoformat() }}?lang={{ lang }}&month={{ selected_month_key }}"
-                                            data-delete-future="{{ '/ui/commitments/' ~ item.original_commitment_id ~ '/occurrences/' ~ item.occurrence_date.isoformat() ~ '?lang=' ~ lang ~ '&month=' ~ selected_month_key ~ '&scope=future' if item.recurrence.value != 'none' else '' }}"
+                                            data-delete-single="/ui/commitments/{{ item.original_commitment_id }}/occurrences/{{ item.source_occurrence_date.isoformat() }}?lang={{ lang }}&month={{ selected_month_key }}"
+                                            data-delete-future="{{ '/ui/commitments/' ~ item.original_commitment_id ~ '/occurrences/' ~ item.source_occurrence_date.isoformat() ~ '?lang=' ~ lang ~ '&month=' ~ selected_month_key ~ '&scope=future' if item.recurrence.value != 'none' else '' }}"
                                             data-delete-single-label="{{ t('btn_delete_occurrence') }}"
                                             data-delete-future-label="{{ t('btn_delete_future') }}"
                                             data-delete-single-confirm="{{ t('confirm_delete_occurrence') }}"
