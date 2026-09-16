@@ -1,7 +1,7 @@
 {% if toast_message %}
-    <div style="background-color: var(--pico-primary-background); color: var(--pico-primary-inverse); padding: 0.75rem 1rem; border-radius: 6px; margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+    <div class="toast toast-success" role="status">
         <span>{{ toast_message }}</span>
-        <button type="button" onclick="this.parentElement.remove()" style="background: none; border: none; color: inherit; font-size: 1.25rem; cursor: pointer; padding: 0; margin: 0;">&times;</button>
+        <button type="button" class="toast-close" onclick="this.parentElement.remove()" aria-label="{{ t('close') if t('close') else 'Fechar' }}">&times;</button>
     </div>
 {% endif %}
 
@@ -12,7 +12,7 @@
 <a href="/?lang={{ lang }}">{{ t('current_month') }}</a></details>
     <a role="button" class="secondary outline" href="/?view={{ view }}&lang={{ lang }}&status={{ list_status }}&month={{ next_month_key }}" aria-label="{{ t('next_month') }}">›</a>
 </nav>
-<p class="page-tools"><a href="/?lang={{ lang }}&month={{ selected_month_key }}">{{ t("month_overview") }}</a> · <a href="/reports/monthly.pdf?month={{ selected_month_key }}&amp;lang={{ lang }}" download>{{ t("download_monthly_pdf") }}</a></p>
+<p class="page-tools"><a class="btn-compact" href="/?lang={{ lang }}&month={{ selected_month_key }}">{{ t("month_overview") }}</a><a class="btn-compact" href="/reports/monthly.pdf?month={{ selected_month_key }}&amp;lang={{ lang }}" download>{{ t("download_monthly_pdf") }}</a></p>
 
 {% if user.role.value == 'client' and view == 'month' %}
 <section aria-labelledby="overview-title"><h1 id="overview-title">{{ t('overview') }}</h1>

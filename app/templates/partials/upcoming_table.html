@@ -27,7 +27,7 @@
     {% if user.role.value == 'admin' %}<div class="quick-actions"><button hx-get="/ui/commitments/new?lang={{ lang }}&month={{ selected_month_key }}" hx-target="#modal-container">{{ t('new_commitment_btn') }}</button><button class="secondary" hx-get="/ui/deposits/new?lang={{ lang }}&month={{ selected_month_key }}" hx-target="#modal-container">{{ t('new_deposit_btn') }}</button></div>{% endif %}
 
     <div class="overflow-auto">
-        <table class="striped">
+        <table class="striped responsive-history upcoming-history">
             <thead>
                 <tr>
                     <th>{{ t('th_due_date') }}</th>
@@ -50,9 +50,9 @@
                         <tr class="date-group"><th colspan="{{ 6 if user.role.value == 'admin' else 5 }}" scope="rowgroup">{{ item.occurrence_date.strftime('%d/%m/%Y') }} · {{ t('paid_amount_short') if paid_view else t('th_amount') }}: {{ money(day_totals[item.occurrence_date]) }}</th></tr>
                         {% set grouping.day = item.occurrence_date %}{% endif %}
                         <tr>
-                            <td><strong>{{ item.occurrence_date.strftime('%d/%m/%Y') }}</strong></td>
+                            <td data-label="{{ t('th_due_date') }}"><strong>{{ item.occurrence_date.strftime('%d/%m/%Y') }}</strong></td>
 
-                            <td>
+                            <td data-label="{{ t('th_description') }}">
                                 {{ item.description }}
                                 {% if row.nature == "estimated" %}<small class="nature-label">{{ t(row.nature) }}</small>{% endif %}
 {% if user.role.value == 'admin' %}<details><summary>{{ t('nature') }}</summary>
@@ -61,9 +61,9 @@
 <label>{{ t('nature') }}<select name="nature">{% for n in ['unclassified','estimated','confirmed'] %}<option value="{{ n }}" {% if row.nature == n %}selected{% endif %}>{{ t(n) }}</option>{% endfor %}</select></label>
 <label><input type="checkbox" name="date_confirmed" {% if row.date_confirmed %}checked{% endif %}>{{ t('th_due_date') }}: {{ t('confirmed') }}</label><button>{{ t('apply') }}</button></form></details>{% endif %}
                             </td>
-                            <td><small>{{ item.category }}</small>{% if payment %}<br><small>{{ account_names.get(payment.account_id, t('unassigned_account')) }}</small>{% endif %}</td>
-                            <td><strong>{{ money(row.display_amount) }}</strong></td>
-                            <td>
+                            <td data-label="{{ t('th_category') }}"><small>{{ item.category }}</small>{% if payment %}<br><small>{{ account_names.get(payment.account_id, t('unassigned_account')) }}</small>{% endif %}</td>
+                            <td data-label="{{ t('th_amount') }}"><strong>{{ money(row.display_amount) }}</strong></td>
+                            <td data-label="{{ t('th_status') }}">
                                 <span class="badge {% if row.status == 'paid' %}badge-paid{% else %}badge-pending{% endif %}">
                                     {{ t(row.status) }}
                                 </span>
@@ -72,7 +72,7 @@
                                 {% endif %}
                             </td>
                             {% if user.role.value == 'admin' %}
-                                <td>
+                                <td data-label="{{ t('th_actions') }}">
                                     <div class="action-btns">
                                         {% if row.status != 'paid' %}
                                             <button class="outline primary payment-label" hx-get="/ui/payments/new?commitment_id={{ item.original_commitment_id }}&occurrence_date={{ item.occurrence_date.isoformat() }}&amount={{ item.amount }}&lang={{ lang }}&month={{ selected_month_key }}" hx-target="#modal-container" hx-swap="innerHTML" aria-label="{{ t('btn_mark_paid') }}" title="{{ t('btn_mark_paid') }}">
@@ -113,8 +113,7 @@
                     {% endfor %}
                 {% else %}
                     <tr>
-                        <td colspan="{% if user.role.value == 'admin' %}8{% else %}7{% endif %}" style="text-align: center; color: var(--pico-muted-color); padding: 2rem;">
-                            {{ t('no_rows') }}
+                        <td colspan="{% if user.role.value == 'admin' %}6{% else %}5{% endif %}"><div class="empty-state">{{ t('no_rows') }}</div>
                         </td>
                     </tr>
                 {% endif %}

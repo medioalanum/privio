@@ -6,10 +6,10 @@
     <button class="secondary" hx-get="/ui/transfers/new?lang={{ lang }}&month={{ selected_month_key }}&view=accounts" hx-target="#modal-container">{{ t('btn_transfer') }}</button>
     </div>{% endif %}
     <p class="notice">{{ t('allocation_explanation') }}</p>
-    <div class="overflow-auto"><table class="striped responsive-history"><thead><tr><th>{{ t('account_name') }}</th><th>{{ t('account_responsible') }}</th><th>{{ t('account_balance') }}</th></tr></thead><tbody>
+    <div class="overflow-auto"><table class="striped responsive-history"><caption class="sr-only">{{ t('accounts_title') }}</caption><thead><tr><th scope="col">{{ t('account_name') }}</th><th scope="col">{{ t('account_responsible') }}</th><th scope="col">{{ t('account_balance') }}</th></tr></thead><tbody>
     {% for row in decisions.accounts %}{% set account = row.account %}<tr>
     <td data-label="{{ t('account_name') }}"><a href="/?view=accounts&amp;lang={{ lang }}&amp;month={{ selected_month_key }}&amp;ledger_account={{ account.id }}#ledger"><strong>{{ account.name }}</strong></a><br><small>{{ t('account_type_' + account.account_type) if account.account_type in ['bank','prepaid','third_party','cash','other'] else t('account_type_allocation') }}</small></td>
     <td data-label="{{ t('account_responsible') }}">{{ account.responsible or '—' }}</td>
     <td data-label="{{ t('account_balance') }}"><strong>{{ money(row.balance) if account.currency == "EUR" else account.currency ~ " " ~ row.balance }}</strong></td>
-    </tr>{% endfor %}</tbody></table></div>
+    </tr>{% else %}<tr><td colspan="3"><div class="empty-state">{{ t('no_rows') }}</div></td></tr>{% endfor %}</tbody></table></div>
 </section>

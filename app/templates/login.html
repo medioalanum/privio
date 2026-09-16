@@ -42,11 +42,11 @@
    <h2 id="form-heading">{{ t('login_title') }}</h2><p class="intro">{{ t('login_intro') }}</p>
    {% if demo_mode %}<p class="notice">{{ t('demo_login') }}</p>{% endif %}
    {% if preview_mode %}<p class="error">{{ t('login_preview') }}</p>{% endif %}
-   {% if error %}<p class="error" role="alert">{{ t('login_error') }}</p>{% endif %}
+   {% if error %}<p id="login-error" class="error" role="alert">{{ t('login_error') }}</p>{% endif %}
    <form action="/login?lang={{ lang }}" method="post">
     <input type="hidden" name="next_path" value="{{ next_path }}">
     <label for="role">{{ t('login_role') }}</label>
-    <select id="role" name="role" autocomplete="username" required><option value="admin"{% if selected_role != 'client' %} selected{% endif %}>Admin</option><option value="client"{% if selected_role == 'client' %} selected{% endif %}>Client</option></select>
+    <select id="role" name="role" autocomplete="username" required{% if not error %} autofocus{% endif %}><option value="admin"{% if selected_role != 'client' %} selected{% endif %}>Admin</option><option value="client"{% if selected_role == 'client' %} selected{% endif %}>Client</option></select>
     <label for="password">{{ t('login_password') }}</label>
     <div class="password-field"><input id="password" name="password" type="password" autocomplete="current-password" required><button type="button" id="toggle-password" aria-controls="password" aria-pressed="false">{{ t('show_password') }}</button></div>
     <button type="submit" class="login-submit">{{ t('login_submit') }}</button>

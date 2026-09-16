@@ -1,10 +1,10 @@
 <div class="modal-backdrop" onclick="if(event.target === this) closeModal()">
     <article class="modal-content">
-        <header style="display: flex; justify-content: space-between; align-items: center;">
+            <header class="modal-header">
             <h4 style="margin-bottom: 0;">
                 {% if commitment %}{{ t('modal_edit_commitment') }}{% else %}{{ t('modal_new_commitment') }}{% endif %}
             </h4>
-            <button type="button" aria-label="Close" class="contrast outline" onclick="closeModal()" style="border: none; font-size: 1.5rem; line-height: 1; padding: 0;">&times;</button>
+            <button type="button" aria-label="{{ t('btn_cancel') }}" class="contrast outline modal-close" onclick="closeModal()">&times;</button>
         </header>
 
         <form 
@@ -16,7 +16,7 @@
             hx-target="#dashboard-content"
             hx-swap="innerHTML"
             hx-on::after-request="if(event.detail.successful) closeModal()"
-            style="margin-top: 1rem;">
+            class="modal-form">
             {% if commitment %}
                 <input type="hidden" name="occurrence_date" value="{{ occurrence_date.isoformat() }}">
                 {% if commitment.recurrence.value != 'none' %}
@@ -93,7 +93,7 @@
                 </label>
             </div>
 
-            <div class="grid" style="align-items: center; margin-top: 0.5rem; margin-bottom: 1.5rem;">
+            <div class="grid form-options">
                 <label for="status">
                     {{ t('field_status') }}
                     <select id="status" name="status" required>
@@ -102,7 +102,7 @@
                     </select>
                 </label>
 
-                <fieldset style="margin-top: 1.5rem;">
+                <fieldset class="estimate-option">
                     <label for="is_estimate">
                         <input 
                             type="checkbox" 
@@ -115,7 +115,7 @@
                 </fieldset>
             </div>
 
-            <footer style="display: flex; justify-content: flex-end; gap: 0.5rem; margin-top: 1rem;">
+            <footer class="modal-actions">
                 <button type="button" class="secondary outline" onclick="closeModal()">{{ t('btn_cancel') }}</button>
                 <button type="submit" class="primary">
                     {% if commitment %}{{ t('btn_save_changes') }}{% else %}{{ t('btn_create_commitment') }}{% endif %}
