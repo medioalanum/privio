@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 220" role="img" aria-labelledby="title">
+  <title id="title">Privio</title>
+  <rect width="760" height="220" rx="28" fill="#0f2227"/>
+  <path fill="#35c99a" d="M74 45h67c37 0 61 22 61 55 0 34-24 56-61 56h-25v30H74V45Zm42 34v43h22c14 0 22-8 22-21s-8-22-22-22h-22Z"/>
+  <path fill="#8ee8ce" d="M126 156h15c30 0 52-14 62-38 2 6 3 12 3 18 0 38-30 68-68 68H74v-18h52v-30Z"/>
+  <text x="238" y="137" fill="#f4fbf8" font-family="Arial, Helvetica, sans-serif" font-size="96" font-weight="700" letter-spacing="-4">Privio</text>
+</svg>

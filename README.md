@@ -1,6 +1,14 @@
-# Privio
+<p align="center">
+  <img src="docs/images/privio-logo.svg" alt="Privio" width="560">
+</p>
 
-**A clear view of what is due, what is paid, and the money available.**
+<p align="center"><em>A clear view of what is due, what is paid, and the money available.</em></p>
+
+<p align="center">
+  <a href="https://github.com/medioalanum/privio/actions/workflows/checks.yml"><img src="https://github.com/medioalanum/privio/actions/workflows/checks.yml/badge.svg" alt="Quality checks"></a>
+  <a href="https://privio-demo.onrender.com/"><img src="https://img.shields.io/badge/demo-live-35c99a?style=flat-square" alt="Live demo"></a>
+  <a href="https://privio-demo.onrender.com/docs"><img src="https://img.shields.io/badge/API-docs-0f2227?style=flat-square" alt="API documentation"></a>
+</p>
 
 Privio is a web application for managing financial commitments, tracking due dates,
 and viewing balances and forecasts. It connects the work of the person managing
