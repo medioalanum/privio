@@ -9,6 +9,9 @@ bills with a simple overview for the person following payments.
 [Try the demo](https://privio-demo.onrender.com/) ·
 [Explore the API](https://privio-demo.onrender.com/docs)
 
+The production service is deployed on Render and uses PostgreSQL on Neon. The
+current production release is commit `eb7d960`.
+
 ## Public demo
 
 Open **[privio-demo.onrender.com](https://privio-demo.onrender.com/)**.
@@ -52,15 +55,15 @@ All screenshots show the demo with fictional data.
 
 ### Login
 
-![Privio login screen with an illustration and demo access instructions](docs/images/demo-login.png)
+![Privio split login layout with the product illustration, access selector, and language control](docs/images/demo-login.png)
 
 ### Admin dashboard
 
-![Admin dashboard with a financial summary and fictional outstanding bills](docs/images/demo-admin.png)
+![Privio Admin dashboard with monthly navigation, summary cards, and the remaining payments panel](docs/images/demo-admin.png)
 
 ### Client dashboard
 
-![Client dashboard in dark mode showing balances and bill coverage](docs/images/demo-client-dark.png)
+![Privio Client dashboard with balance summary and bill coverage in the responsive dark layout](docs/images/demo-client-dark.png)
 
 <details>
 <summary>Monthly PDF report example</summary>
