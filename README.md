@@ -55,20 +55,20 @@ All screenshots show the demo with fictional data.
 
 ### Login
 
-![Privio split login layout with the product illustration, access selector, and language control](docs/images/demo-login-v2.png)
+![Privio split login layout with the product illustration, access selector, and language control](docs/images/layout-20260917-login.png)
 
 ### Admin dashboard
 
-![Privio Admin dashboard with monthly navigation, summary cards, and the remaining payments panel](docs/images/demo-admin-v2.png)
+![Privio Admin dashboard with monthly navigation, summary cards, and the remaining payments panel](docs/images/layout-20260917-dashboard.png)
 
 ### Accounts and transaction history
 
-![Privio Accounts and Wallets view with balances and transaction history in the dark layout](docs/images/demo-accounts-v2.png)
+![Privio Accounts and Wallets view with balances and transaction history in the dark layout](docs/images/layout-20260917-accounts.png)
 
 <details>
 <summary>Recurring commitments</summary>
 
-![Recurring commitments view with series management actions in the dark layout](docs/images/demo-recurring-v2.png)
+![Recurring commitments view with series management actions in the dark layout](docs/images/layout-20260917-recurring.png)
 
 </details>
 
