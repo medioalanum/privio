@@ -362,7 +362,10 @@ def test_recurring_occurrence_edit_scopes_and_single_delete(
         in single.text
     )
     assert 'data-delete-single-label="Excluir somente esta ocorrência"' in single.text
-    assert 'data-delete-future-label="Excluir este e os próximos vencimentos"' in single.text
+    assert (
+        'data-delete-future-label="Excluir este e os próximos vencimentos"'
+        in single.text
+    )
     assert 'M6 6l12 12' not in single.text
 
     paid = client.post(
