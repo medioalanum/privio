@@ -366,7 +366,7 @@ def test_recurring_occurrence_edit_scopes_and_single_delete(
         'data-delete-future-label="Excluir este e os próximos vencimentos"'
         in single.text
     )
-    assert 'M6 6l12 12' not in single.text
+    assert "M6 6l12 12" not in single.text
 
     paid = client.post(
         f"/ui/commitments/{commitment_id}/toggle-paid",
