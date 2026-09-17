@@ -63,12 +63,12 @@ All screenshots show the demo with fictional data.
 
 ### Client dashboard
 
-![Privio Client dashboard with balance summary and bill coverage in the responsive dark layout](docs/images/demo-client-dark.png)
+![Privio Accounts and Wallets view with balances and transaction history in the dark layout](docs/images/demo-client-dark.png)
 
 <details>
 <summary>Monthly PDF report example</summary>
 
-![Monthly report with paid and outstanding bills, totals, and an export timestamp](docs/images/demo-report.png)
+![Recurring commitments view with series management actions in the dark layout](docs/images/demo-report.png)
 
 </details>
 
