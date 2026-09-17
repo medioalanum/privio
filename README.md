@@ -8,7 +8,6 @@ bills with a simple overview for the person following payments.
 
 
 [Live demo](https://privio-demo.onrender.com/) ·
-[Production](https://privio-commitments-app.onrender.com/) ·
 [API documentation](https://privio-demo.onrender.com/docs) ·
 [Technical documentation](docs/README.md)
 
