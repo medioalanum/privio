@@ -66,6 +66,15 @@ All screenshots show the demo with fictional data.
 ![Privio Accounts and Wallets view with balances and transaction history in the dark layout](docs/images/layout-20260917-accounts.png)
 
 <details>
+<summary>Monthly PDF report example</summary>
+
+[Open the September 2026 demo report](https://privio-demo.onrender.com/reports/monthly.pdf?month=2026-09&lang=en)
+
+![Monthly report with paid and outstanding bills, totals, and an export timestamp](docs/images/layout-20260917-monthly-report.png)
+
+</details>
+
+<details>
 <summary>Recurring commitments</summary>
 
 ![Recurring commitments view with series management actions in the dark layout](docs/images/layout-20260917-recurring.png)
