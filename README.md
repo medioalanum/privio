@@ -61,12 +61,12 @@ All screenshots show the demo with fictional data.
 
 ![Privio Admin dashboard with monthly navigation, summary cards, and the remaining payments panel](docs/images/demo-admin-v2.png)
 
-### Client dashboard
+### Accounts and transaction history
 
 ![Privio Accounts and Wallets view with balances and transaction history in the dark layout](docs/images/demo-accounts-v2.png)
 
 <details>
-<summary>Monthly PDF report example</summary>
+<summary>Recurring commitments</summary>
 
 ![Recurring commitments view with series management actions in the dark layout](docs/images/demo-recurring-v2.png)
 
