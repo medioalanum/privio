@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/images/privio-logo.svg" alt="Privio" width="560">
+  <img src="docs/images/privio-logo.png" alt="Privio" width="560">
 </p>
 
 <p align="center"><em>A clear view of what is due, what is paid, and the money available.</em></p>
