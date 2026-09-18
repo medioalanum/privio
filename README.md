@@ -126,6 +126,25 @@ Application settings are supplied through environment variables.
 | Continuous integration | GitHub Actions, tests with an isolated PostgreSQL database |
 | Hosting | Render for the application, Neon for the database |
 
+## Product Decisions
+
+- **Server-side authorization:** financial permissions are enforced in the application layer so the browser never defines access.
+- **Shared demo credentials:** the public demo uses fictional data and fixed test accounts to keep portfolio review frictionless.
+- **On-demand reports:** PDFs are generated from the current view rather than stored as a second source of truth.
+
+## Limitations
+
+- The public demo is not intended for real financial information or multi-tenant production use.
+- Demo data is shared and reset regularly, so changes are temporary.
+- Forecasts are deterministic projections from recorded commitments; they are not financial advice.
+- Scaling to production would require stronger secret management, audit trails, backups, and tenant isolation.
+
+## Roadmap
+
+1. Add tenant isolation and an audit log for production deployments.
+2. Add import/export workflows for bank transactions and recurring commitments.
+3. Add operational monitoring for report generation and scheduled demo resets.
+
 ## Project structure
 
 ```text
